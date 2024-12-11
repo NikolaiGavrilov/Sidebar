@@ -1,23 +1,103 @@
 .sidebar {
   background-color: white;
-  max-width: 40px;
+  max-width: 166px;
   padding: 15px;
   max-height: 706px;
   border-radius: 20px;
   border: 4px solid #f2f4f9;
   outline: 1px solid white;
-  transition: max-width 0.3s ease;
+  transition: max-width 0.3s ease, padding 0.3s ease;
 
-  &.opened {
-    max-width: 166px;
+  &:not(.opened) {
+    max-width: 40px;
+  }
+
+  &:not(.opened) .sidebar-toggler {
+    background-color: white;
+    right: -50px;
+  }
+
+  &:not(.opened) .logo__title {
+    opacity: 0;
+    animation: disappear 0.2s forwards;
+  }
+
+  &:not(.opened) .route__title {
+    opacity: 0;
+    animation: disappear 0.3s forwards;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  20% {
+    opacity: 0.9;
+    transform: translate(5px, 0);
+  }
+  40% {
+    opacity: 0.8;
+    transform: translate(10px, 0);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translate(15px, 0);
+  }
+  80% {
+    opacity: 0.3;
+    transform: translate(20px, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(30px, 0);
+  }
+}
+
+.sidebar-toggler {
+  padding: 0px 7px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  position: absolute;
+  right: -28px;
+  color: #495b75;
+  transition: background-color 0.3s ease, right 0.3s ease;
+  animation: appear-from-right 0.5s forwards;
+  animation-delay: 1.5s;
+  opacity: 0;
+
+  &__icon {
+    transition: transform 0.3s ease;
+  }
+}
+
+.sidebar.opened .sidebar-toggler__icon {
+  transform: rotate(-360deg);
+}
+
+.sidebar:not(.opened) .sidebar-toggler__icon {
+  transform: rotate(360deg);
+}
+
+@keyframes appear-from-right {
+  0% {
+    opacity: 0;
+    transform: translate(50px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 
 .circles {
+  opacity: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 5px;
+  animation: drop-from-above 0.3s forwards;
 }
 
 .circle {
@@ -43,6 +123,9 @@
 }
 
 .logo {
+  opacity: 0;
+  animation: drop-from-above 0.3s forwards;
+  animation-delay: 0.2s;
   cursor: pointer;
   position: relative;
   padding: 25px 0px 0px 4px;
@@ -59,19 +142,8 @@
   &__title {
     color: #0012bf;
     font-weight: 700;
-  }
-}
-
-.sidebar-toggler {
-  padding: 0px 7px;
-  border-radius: 50%;
-  background-color: #e2e8f0;
-  position: absolute;
-  right: -32px;
-  color: #495b75;
-
-  &.opened {
-    background-color: #fff;
+    opacity: 1;
+    transition: opacity 0.3s ease;
   }
 }
 
@@ -90,37 +162,106 @@
 }
 
 .route {
+  font-weight: 500;
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: center;
   border-radius: 10px;
+  transition: background-color 0.3s ease;
 
   &__icon {
     padding: 10px;
+    max-width: 20px;
     color: #4a5d77;
+    transition: color 0.3s ease, box-shadow 0.3s ease;
   }
 
   &__title {
     color: #4a5d77;
+    opacity: 1;
+    transition: color 0.3s ease, text-shadow 0.3s ease, opacity 0.3s ease;
   }
 
   &:hover {
     background-color: #f0f2ff;
     cursor: pointer;
   }
+}
 
-  &:active .route__icon {
-    color: #0014c0;
-    // box-shadow: 2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff,
-    //   -2px -2px 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff;
-    // background-color: #fff;
+.route.active {
+  background-color: #f0f2ff;
+}
+
+.route.active .route__icon {
+  color: #0014c0;
+}
+
+.route.active .route__title {
+  color: #0014c0;
+  text-shadow: 1.5px 1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px -1.5px 0 #fff,
+    -1.5px -1.5px 0 #fff, 1.5px 0 0 #fff, -1.5px 0 0 #fff, 0 1.5px 0 #fff,
+    0 -1.5px 0 #fff;
+}
+
+.route-upper {
+  opacity: 0;
+  &:first-child {
+    animation: drop-from-above 0.4s forwards;
+    animation-delay: 0.5s;
   }
+  &:nth-child(2) {
+    animation: drop-from-above 0.4s forwards;
+    animation-delay: 0.6s;
+  }
+  &:nth-child(3) {
+    animation: drop-from-above 0.4s forwards;
+    animation-delay: 0.7s;
+  }
+  &:nth-child(4) {
+    animation: drop-from-above 0.4s forwards;
+    animation-delay: 0.8s;
+  }
+  &:nth-child(5) {
+    animation: drop-from-above 0.4s forwards;
+    animation-delay: 0.9s;
+  }
+  &:last-child {
+    animation: drop-from-above 0.4s forwards;
+    animation-delay: 1s;
+  }
+}
 
-  &:active .route__title {
-    color: #0014c0;
-    text-shadow: 1.5px 1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px -1.5px 0 #fff,
-      -1.5px -1.5px 0 #fff, 1.5px 0 0 #fff, -1.5px 0 0 #fff, 0 1.5px 0 #fff,
-      0 -1.5px 0 #fff;
+.route-bottom {
+  opacity: 0;
+  &:first-child {
+    animation: drop-from-below 0.4s forwards;
+    animation-delay: 1.2s;
+  }
+  &:last-child {
+    animation: drop-from-below 0.4s forwards;
+    animation-delay: 1.3s;
+  }
+}
+
+@keyframes drop-from-above {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes drop-from-below {
+  0% {
+    opacity: 0;
+    transform: translate(0, 50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
