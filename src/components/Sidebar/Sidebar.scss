@@ -1,0 +1,126 @@
+.sidebar {
+  background-color: white;
+  max-width: 40px;
+  padding: 15px;
+  max-height: 706px;
+  border-radius: 20px;
+  border: 4px solid #f2f4f9;
+  outline: 1px solid white;
+  transition: max-width 0.3s ease;
+
+  &.opened {
+    max-width: 166px;
+  }
+}
+
+.circles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+.circle {
+  cursor: pointer;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+
+  &:first-child {
+    background-color: #ec6a5e;
+    border: 1px solid #e94d3f;
+  }
+
+  &:nth-child(2) {
+    background-color: #f5bf4f;
+    border: 1px solid #f3b32d;
+  }
+
+  &:nth-child(3) {
+    background-color: #61c554;
+    border: 1px solid #4dbd3d;
+  }
+}
+
+.logo {
+  cursor: pointer;
+  position: relative;
+  padding: 25px 0px 0px 4px;
+  gap: 10px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  &__img {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__title {
+    color: #0012bf;
+    font-weight: 700;
+  }
+}
+
+.sidebar-toggler {
+  padding: 0px 7px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  position: absolute;
+  right: -32px;
+  color: #495b75;
+
+  &.opened {
+    background-color: #fff;
+  }
+}
+
+.routes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__upper {
+    margin-top: 35px;
+  }
+
+  &__bottom {
+    margin-top: 190px;
+  }
+}
+
+.route {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  border-radius: 10px;
+
+  &__icon {
+    padding: 10px;
+    color: #4a5d77;
+  }
+
+  &__title {
+    color: #4a5d77;
+  }
+
+  &:hover {
+    background-color: #f0f2ff;
+    cursor: pointer;
+  }
+
+  &:active .route__icon {
+    color: #0014c0;
+    // box-shadow: 2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff,
+    //   -2px -2px 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff;
+    // background-color: #fff;
+  }
+
+  &:active .route__title {
+    color: #0014c0;
+    text-shadow: 1.5px 1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px -1.5px 0 #fff,
+      -1.5px -1.5px 0 #fff, 1.5px 0 0 #fff, -1.5px 0 0 #fff, 0 1.5px 0 #fff,
+      0 -1.5px 0 #fff;
+  }
+}
