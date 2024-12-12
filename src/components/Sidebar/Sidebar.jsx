@@ -47,112 +47,65 @@ const Sidebar = (props) => {
   };
 
   const SidebarContainer = styled.div`
-    background-color: ${themeColor === "dark"
-      ? "var(--color-sidebar-background-dark-default)"
-      : "var(--color-sidebar-background-light-default)"};
-    border: 4px solid
-      ${themeColor === "dark"
-        ? "var(--color-sidebar-background-dark-active)"
-        : "var(--color-sidebar-background-light-active)"};
-    outline: 1px solid
-      ${themeColor === "dark"
-        ? "var(--color-sidebar-background-dark-default)"
-        : "var(--color-sidebar-background-light-default)"};
+    background-color: var(--color-sidebar-background-${themeColor}-default);
+    border: 4px solid var(--color-sidebar-background-${themeColor}-active);
+    outline: 1px solid var(--color-sidebar-background-${themeColor}-default);
 
     &:not(.opened) .sidebar-toggler {
-      background-color: ${themeColor === "dark"
-        ? "var(--color-button-background-dark-default)"
-        : "var(--color-button-background-light-default)"};
+      background-color: var(--color-button-background-${themeColor}-default);
     }
   `;
 
   const SidebarToggler = styled.div`
-    background-color: ${themeColor === "dark"
-      ? "var(--color-button-background-dark-active)"
-      : "var(--color-button-background-light-active)"};
-
-    color: ${themeColor === "dark"
-      ? "var(--color-text-dark-default)"
-      : "var(--color-text-light-default)"};
+    background-color: var(--color-button-background-${themeColor}-active);
+    color: var(--color-text-${themeColor}-default);
 
     &:hover .sidebar-toggler__icon {
-      color: ${themeColor === "dark"
-        ? "var(--color-text-dark-hover)"
-        : "var(--color-text-light-hover)"};
+      color: var(--color-text-${themeColor}-hover);
     }
   `;
 
   const Logo = styled.div`
     .logo__title {
-      color: ${themeColor === "dark"
-        ? "var(--color-text-logo-dark-default)"
-        : "var(--color-text-logo-light-default)"};
+      color: var(--color-text-logo-${themeColor}-default);
     }
   `;
 
   const Route = styled.div`
+    background-color: var(--color-sidebar-background-${themeColor}-default);
     .route__icon {
-      color: ${themeColor === "dark"
-        ? "var(--color-text-dark-default)"
-        : "var(--color-text-light-default)"};
+      color: var(--color-text-${themeColor}-default);
     }
-
     .route__title {
-      color: ${themeColor === "dark"
-        ? "var(--color-text-dark-default)"
-        : "var(--color-text-light-default)"};
+      color: var(--color-text-${themeColor}-default);
     }
 
     &:hover {
-      background-color: ${themeColor === "dark"
-        ? "var(--color-sidebar-background-dark-hover)"
-        : "var(--color-sidebar-background-light-hover)"};
-
+      background-color: var(--color-sidebar-background-${themeColor}-hover);
       .route__icon {
-        color: ${themeColor === "dark"
-          ? "var(--color-text-dark-hover)"
-          : "var(--color-text-light-hover)"};
+        color: var(--color-text-${themeColor}-hover);
       }
       .route__title {
-        color: ${themeColor === "dark"
-          ? "var(--color-text-dark-hover)"
-          : "var(--color-text-light-hover)"};
+        color: var(--color-text-${themeColor}-hover);
       }
     }
 
     &.active {
-      background-color: ${themeColor === "dark"
-        ? "var(--color-sidebar-background-dark-active)"
-        : "var(--color-sidebar-background-light-active)"};
+      background-color: var(--color-sidebar-background-${themeColor}-active);
       .route__icon {
-        color: ${themeColor === "dark"
-          ? "var(--color-text-dark-active)"
-          : "var(--color-text-light-active)"};
+        color: var(--color-text-${themeColor}-active);
       }
       .route__title {
-        color: ${themeColor === "dark"
-          ? "var(--color-text-dark-active)"
-          : "var(--color-text-light-active)"};
+        color: var(--color-text-${themeColor}-active);
         text-shadow: 1.5px 1.5px 0
-            var(
-              --color-sidebar-background-${themeColor === "dark" ? "dark" : "light"}-default
-            ),
-          -1.5px 1.5px 0 var(--color-sidebar-background-${themeColor === "dark" ? "dark" : "light"}-default),
-          1.5px -1.5px 0 var(--color-sidebar-background-${themeColor === "dark" ? "dark" : "light"}-default),
-          -1.5px -1.5px 0
-            var(
-              --color-sidebar-background-${themeColor === "dark" ? "dark" : "light"}-default
-            ),
-          1.5px 0 0
-            var(
-              --color-sidebar-background-${themeColor === "dark" ? "dark" : "light"}-default
-            ),
-          -1.5px 0 0 var(--color-sidebar-background-${themeColor === "dark" ? "dark" : "light"}-default),
-          0 1.5px 0
-            var(
-              --color-sidebar-background-${themeColor === "dark" ? "dark" : "light"}-default
-            ),
-          0 -1.5px 0 var(--color-sidebar-background-${themeColor === "dark" ? "dark" : "light"}-default);
+            var(--color-sidebar-background-${themeColor}-default),
+          -1.5px 1.5px 0 var(--color-sidebar-background-${themeColor}-default),
+          1.5px -1.5px 0 var(--color-sidebar-background-${themeColor}-default),
+          -1.5px -1.5px 0 var(--color-sidebar-background-${themeColor}-default),
+          1.5px 0 0 var(--color-sidebar-background-${themeColor}-default),
+          -1.5px 0 0 var(--color-sidebar-background-${themeColor}-default),
+          0 1.5px 0 var(--color-sidebar-background-${themeColor}-default),
+          0 -1.5px 0 var(--color-sidebar-background-${themeColor}-default);
       }
     }
   `;
@@ -202,7 +155,9 @@ const Sidebar = (props) => {
           </Route>
         ))}
       </div>
-      <button className="toggle-theme" onClick={toggleTheme}>Сменить тему</button>
+      <button className="toggle-theme" onClick={toggleTheme}>
+        Сменить тему
+      </button>
     </SidebarContainer>
   );
 };
